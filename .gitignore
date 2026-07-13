@@ -1,0 +1,15 @@
+**/target
+**/.idea
+**/.zed
+**/.DS_Store
+**/.vscode
+**/*.rs.bk
+**/Cargo.lock
+scripts/
+bundles/
+
+# Editor and OS
+*.swp
+*.swo
+*~
+.env.local

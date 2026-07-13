@@ -1,0 +1,11 @@
+# Clippy configuration for CSES submissions
+# CSES runs Rust 1.75.0 with edition 2021
+
+# Match CSES's optimization level
+# (Note: this doesn't affect clippy, but documents the target environment)
+
+# Avoid suggesting unstable features
+avoid-breaking-exported-api = true
+
+# Set minimum supported Rust version to match CSES
+msrv = "1.75.0"

@@ -1,0 +1,40 @@
+{
+  "default": true,
+
+  // Disable rules that are noisy in real-world writing
+  "MD013": false, // line length
+  "MD033": false, // inline HTML
+  "MD041": false, // first line must be heading
+  "MD024": false, // duplicate headings
+  "MD026": false, // trailing punctuation in headings
+  "MD040": false, // fenced code language required
+
+  // Relax common friction points
+  "MD007": { "indent": 2 }, // unordered list indentation
+  "MD030": {
+    // list marker spacing
+    "ul_single": 1,
+    "ol_single": 1,
+    "ul_multi": 1,
+    "ol_multi": 1
+  },
+
+  // Keep useful structure rules ON
+  "MD003": { "style": "atx" }, // # headings
+  "MD004": { "style": "dash" }, // - list style
+  "MD005": true, // consistent indentation
+  "MD007": true,
+  "MD009": true, // no trailing spaces
+  "MD010": true, // no hard tabs
+  "MD012": true, // no multiple blank lines
+  "MD018": true,
+  "MD019": true,
+  "MD022": true,
+  "MD025": false, // allow multiple top-level headings
+  "MD029": { "style": "ordered" },
+  "MD032": true,
+  "MD034": true,
+  "MD036": false, // allow emphasis instead of headings
+  "MD042": true,
+  "MD046": { "style": "fenced" }
+}
