@@ -1,4 +1,4 @@
-use competitive_rust::{Output, Scanner};
+use competitive_rust::{min_pairs_with_limit, Output, Scanner};
 
 fn solve(input: &mut Scanner, output: &mut Output) {
     let children_count = input.next_usize();
@@ -11,17 +11,7 @@ fn solve(input: &mut Scanner, output: &mut Output) {
 
     weights.sort_unstable();
 
-    let mut left = 0usize;
-    let mut right = children_count;
-    let mut gondolas = 0u64;
-
-    while left < right {
-        right -= 1;
-        if left < right && weights[left] + weights[right] <= max_weight {
-            left += 1;
-        }
-        gondolas += 1;
-    }
+    let gondolas = min_pairs_with_limit(&weights, max_weight);
 
     output.writeln(gondolas);
 }

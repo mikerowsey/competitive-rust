@@ -1,25 +1,10 @@
-use competitive_rust::{Output, Scanner};
+use competitive_rust::{mod_pow, Output, Scanner};
 
 const MOD: u64 = 1_000_000_007;
 
-fn mod_pow(mut base: u64, mut exp: u64) -> u64 {
-    let mut result = 1;
-
-    while exp > 0 {
-        if exp & 1 == 1 {
-            result = result * base % MOD;
-        }
-
-        base = base * base % MOD;
-        exp >>= 1;
-    }
-
-    result
-}
-
 fn solve(input: &mut Scanner, output: &mut Output) {
     let n = input.next_u64();
-    output.writeln(mod_pow(2, n));
+    output.writeln(mod_pow(2, n, MOD));
 }
 
 fn main() {

@@ -1,23 +1,4 @@
-use competitive_rust::{factorial, Output, Scanner};
-fn next_permutation(v: &mut [u8]) -> bool {
-    let n = v.len();
-
-    for i in (0..n - 1).rev() {
-        if v[i] < v[i + 1] {
-            for j in (i + 1..n).rev() {
-                if v[i] < v[j] {
-                    v.swap(i, j);
-                    break;
-                }
-            }
-
-            v[i + 1..].reverse();
-            return true;
-        }
-    }
-
-    false
-}
+use competitive_rust::{factorial, next_permutation, Output, Scanner};
 
 fn permutation_count(bytes: &[u8]) -> usize {
     let mut frequency = [0usize; 26];

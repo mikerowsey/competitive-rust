@@ -1,4 +1,4 @@
-use competitive_rust::{Output, Scanner};
+use competitive_rust::{max_matches_with_tolerance, Output, Scanner};
 
 fn solve(input: &mut Scanner, output: &mut Output) {
     let applicants_count = input.next_usize();
@@ -18,24 +18,7 @@ fn solve(input: &mut Scanner, output: &mut Output) {
     desired_sizes.sort_unstable();
     apartment_sizes.sort_unstable();
 
-    let mut applicant_index = 0usize;
-    let mut apartment_index = 0usize;
-    let mut matches = 0u64;
-
-    while applicant_index < applicants_count && apartment_index < apartments_count {
-        let desired_size = desired_sizes[applicant_index];
-        let apartment_size = apartment_sizes[apartment_index];
-
-        if (desired_size - apartment_size).abs() <= tolerance {
-            applicant_index += 1;
-            apartment_index += 1;
-            matches += 1;
-        } else if desired_size - apartment_size > tolerance {
-            apartment_index += 1;
-        } else {
-            applicant_index += 1;
-        }
-    }
+    let matches = max_matches_with_tolerance(&desired_sizes, &apartment_sizes, tolerance);
 
     output.writeln(matches);
 }

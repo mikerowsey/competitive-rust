@@ -1,4 +1,4 @@
-use competitive_rust::{MatrixMod2, Output, Scanner};
+use competitive_rust::{ModMatrix2x2, Output, Scanner};
 const MOD: u64 = 1_000_000_007;
 
 fn solve(input: &mut Scanner, output: &mut Output) {
@@ -6,7 +6,7 @@ fn solve(input: &mut Scanner, output: &mut Output) {
     let result = match n {
         0 => 0,
         1 => 1,
-        _ => MatrixMod2::<MOD>::new(0, 1, 1, 1).pow(n - 1).a11,
+        _ => ModMatrix2x2::<MOD>::new(0, 1, 1, 1).pow(n - 1).a11,
     };
     output.writeln(result);
 }

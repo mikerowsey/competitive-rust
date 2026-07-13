@@ -1,4 +1,4 @@
-use competitive_rust::{Output, Scanner};
+use competitive_rust::{find_two_sum_indices, Output, Scanner};
 
 fn solve(input: &mut Scanner, output: &mut Output) {
     let value_count = input.next_usize();
@@ -11,20 +11,11 @@ fn solve(input: &mut Scanner, output: &mut Output) {
 
     values.sort_unstable_by_key(|entry| entry.1);
 
-    let mut left = 0usize;
-    let mut right = value_count.saturating_sub(1);
-    while left < right {
-        let sum = values[left].1 + values[right].1;
-        if sum > target_sum {
-            right -= 1;
-        } else if sum < target_sum {
-            left += 1;
-        } else {
-            output.write(values[left].0);
-            output.write_byte(b' ');
-            output.writeln(values[right].0);
-            return;
-        }
+    if let Some((left_index, right_index)) = find_two_sum_indices(&values, target_sum) {
+        output.write(left_index);
+        output.write_byte(b' ');
+        output.writeln(right_index);
+        return;
     }
 
     output.writeln("IMPOSSIBLE");

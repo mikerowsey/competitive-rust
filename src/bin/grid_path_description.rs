@@ -1,8 +1,6 @@
-use competitive_rust::{Output, Scanner};
+use competitive_rust::{Output, Scanner, CARDINAL_DIRS};
 
 const PATH_LENGTH: usize = 48;
-const DX: [i32; 4] = [-1, 1, 0, 0];
-const DY: [i32; 4] = [0, 0, -1, 1];
 const DC: [u8; 4] = [b'U', b'D', b'L', b'R'];
 
 fn one_way_neighbor(visited: &[[bool; 9]; 9], x: usize, y: usize) -> bool {
@@ -11,9 +9,9 @@ fn one_way_neighbor(visited: &[[bool; 9]; 9], x: usize, y: usize) -> bool {
     }
 
     let mut free_neighbors = 0;
-    for direction in 0..4 {
-        let nx = (x as i32 + DX[direction]) as usize;
-        let ny = (y as i32 + DY[direction]) as usize;
+    for &(dx, dy) in &CARDINAL_DIRS {
+        let nx = (x as i32 + dx) as usize;
+        let ny = (y as i32 + dy) as usize;
         if !visited[nx][ny] {
             free_neighbors += 1;
         }
@@ -50,9 +48,9 @@ fn dfs(
     let mut forced_direction = -1i32;
 
     if required == b'?' {
-        for direction in 0..4 {
-            let nx = (x as i32 + DX[direction]) as usize;
-            let ny = (y as i32 + DY[direction]) as usize;
+        for (direction, &(dx, dy)) in CARDINAL_DIRS.iter().enumerate() {
+            let nx = (x as i32 + dx) as usize;
+            let ny = (y as i32 + dy) as usize;
             if visited[nx][ny] {
                 continue;
             }
@@ -68,7 +66,7 @@ fn dfs(
     }
 
     let mut result = 0;
-    for direction in 0..4 {
+    for (direction, &(dx, dy)) in CARDINAL_DIRS.iter().enumerate() {
         if required != b'?' && DC[direction] != required {
             continue;
         }
@@ -76,8 +74,8 @@ fn dfs(
             continue;
         }
 
-        let nx = (x as i32 + DX[direction]) as usize;
-        let ny = (y as i32 + DY[direction]) as usize;
+        let nx = (x as i32 + dx) as usize;
+        let ny = (y as i32 + dy) as usize;
         if visited[nx][ny] {
             continue;
         }

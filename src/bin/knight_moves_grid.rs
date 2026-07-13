@@ -1,12 +1,9 @@
 use std::collections::VecDeque;
 
-use competitive_rust::{Output, Scanner};
+use competitive_rust::{in_bounds, Output, Scanner, KNIGHT_DIRS};
 
 fn solve(input: &mut Scanner, output: &mut Output) {
     let n = input.next_i32();
-
-    let dr = [-2, -2, -1, -1, 1, 1, 2, 2];
-    let dc = [-1, 1, -2, 2, -2, 2, -1, 1];
 
     let size = (n as usize) * (n as usize);
     let mut distance = vec![-1i32; size];
@@ -20,11 +17,11 @@ fn solve(input: &mut Scanner, output: &mut Output) {
         let column = index % n;
         let current_distance = distance[index as usize];
 
-        for mv in 0..8 {
-            let next_row = row + dr[mv];
-            let next_column = column + dc[mv];
+        for &(dr, dc) in &KNIGHT_DIRS {
+            let next_row = row + dr;
+            let next_column = column + dc;
 
-            if next_row < 0 || next_row >= n || next_column < 0 || next_column >= n {
+            if !in_bounds(next_row, next_column, n, n) {
                 continue;
             }
 

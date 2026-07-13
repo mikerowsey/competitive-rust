@@ -1,14 +1,14 @@
 use std::ops::Mul;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub struct MatrixMod2<const MOD: u64> {
+pub struct ModMatrix2x2<const MOD: u64> {
     pub a00: u64,
     pub a01: u64,
     pub a10: u64,
     pub a11: u64,
 }
 
-impl<const MOD: u64> MatrixMod2<MOD> {
+impl<const MOD: u64> ModMatrix2x2<MOD> {
     pub const fn new(a00: u64, a01: u64, a10: u64, a11: u64) -> Self {
         Self { a00, a01, a10, a11 }
     }
@@ -33,7 +33,7 @@ impl<const MOD: u64> MatrixMod2<MOD> {
     }
 }
 
-impl<const MOD: u64> Mul for MatrixMod2<MOD> {
+impl<const MOD: u64> Mul for ModMatrix2x2<MOD> {
     type Output = Self;
 
     fn mul(self, rhs: Self) -> Self {
