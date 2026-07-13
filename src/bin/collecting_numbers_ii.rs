@@ -18,9 +18,14 @@ fn solve(input: &mut Scanner, output: &mut Output) {
     let mut values_at_position = vec![0usize; n + 1];
     let mut positions = vec![0usize; n + 1];
 
-    for position in 1..=n {
+    for (position, slot) in values_at_position
+        .iter_mut()
+        .enumerate()
+        .take(n + 1)
+        .skip(1)
+    {
         let value = input.next_usize();
-        values_at_position[position] = value;
+        *slot = value;
         positions[value] = position;
     }
 

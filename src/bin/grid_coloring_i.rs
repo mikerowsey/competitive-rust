@@ -9,12 +9,12 @@ fn solve(input: &mut Scanner, output: &mut Output) {
         grid.push(input.next_string().into_bytes());
     }
 
-    for row in 0..n {
-        for column in 0..m {
+    for (row, row_cells) in grid.iter().enumerate() {
+        for (column, &cell) in row_cells.iter().take(m).enumerate() {
             let first_choice = if (row + column) % 2 == 0 { b'A' } else { b'C' };
             let second_choice = if (row + column) % 2 == 0 { b'B' } else { b'D' };
 
-            if grid[row][column] == first_choice {
+            if cell == first_choice {
                 output.write_byte(second_choice);
             } else {
                 output.write_byte(first_choice);

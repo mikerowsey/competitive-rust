@@ -51,12 +51,12 @@ pub fn find_two_sum_indices(sorted_values: &[(usize, u32)], target: u32) -> Opti
 
     while left < right {
         let sum = sorted_values[left].1 + sorted_values[right].1;
-        if sum > target {
-            right -= 1;
-        } else if sum < target {
-            left += 1;
-        } else {
-            return Some((sorted_values[left].0, sorted_values[right].0));
+        match sum.cmp(&target) {
+            std::cmp::Ordering::Greater => right -= 1,
+            std::cmp::Ordering::Less => left += 1,
+            std::cmp::Ordering::Equal => {
+                return Some((sorted_values[left].0, sorted_values[right].0));
+            }
         }
     }
 
