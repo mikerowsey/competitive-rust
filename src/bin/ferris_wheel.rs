@@ -1,15 +1,31 @@
 use competitive_rust::{Output, Scanner};
 
 fn solve(input: &mut Scanner, output: &mut Output) {
-    let n = input.next_u64();
-    let expected = n * (n + 1) / 2;
-    let mut actual = 0;
+    let children_count = input.next_usize();
+    let max_weight = input.next_u64();
 
-    for _ in 0..n - 1 {
-        actual += input.next_u64();
+    let mut weights = Vec::with_capacity(children_count);
+    for _ in 0..children_count {
+        weights.push(input.next_u64());
     }
-    output.writeln(expected - actual);
+
+    weights.sort_unstable();
+
+    let mut left = 0usize;
+    let mut right = children_count;
+    let mut gondolas = 0u64;
+
+    while left < right {
+        right -= 1;
+        if left < right && weights[left] + weights[right] <= max_weight {
+            left += 1;
+        }
+        gondolas += 1;
+    }
+
+    output.writeln(gondolas);
 }
+
 fn main() {
     let mut input = Scanner::new();
     let mut output = Output::new();
@@ -25,34 +41,12 @@ mod tests {
     fn run(input: &str) -> String {
         let mut input = Scanner::from_bytes(input.as_bytes());
         let mut output = Output::new();
-
         solve(&mut input, &mut output);
-
         String::from_utf8(output.into_bytes()).unwrap()
     }
 
     #[test]
     fn sample() {
-        assert_eq!(run("5\n2 3 1 5\n"), "4\n",);
-    }
-
-    #[test]
-    fn missing_first() {
-        assert_eq!(run("5\n2 3 4 5\n"), "1\n",);
-    }
-
-    #[test]
-    fn missing_last() {
-        assert_eq!(run("5\n1 2 3 4\n"), "5\n",);
-    }
-
-    #[test]
-    fn single() {
-        assert_eq!(run("1\n"), "1\n",);
-    }
-
-    #[test]
-    fn unordered() {
-        assert_eq!(run("8\n8 2 5 3 6 1 7\n"), "4\n",);
+        assert_eq!(run("4 10\n7 2 3 9\n"), "3\n");
     }
 }

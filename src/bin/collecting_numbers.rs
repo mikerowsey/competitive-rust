@@ -1,10 +1,22 @@
 use competitive_rust::{Output, Scanner};
 
 fn solve(input: &mut Scanner, output: &mut Output) {
-    let n = input.next_i64();
-    for i in 1..=n {
-        output.writeln((i.pow(4) - 9 * i.pow(2) + 24 * i - 16) / 2);
+    let n = input.next_usize();
+
+    let mut positions = vec![0usize; n + 1];
+    for index in 0..n {
+        let value = input.next_usize();
+        positions[value] = index;
     }
+
+    let mut rounds = 1u64;
+    for value in 1..=n {
+        if positions[value] < positions[value - 1] {
+            rounds += 1;
+        }
+    }
+
+    output.writeln(rounds);
 }
 
 fn main() {
@@ -22,34 +34,12 @@ mod tests {
     fn run(input: &str) -> String {
         let mut input = Scanner::from_bytes(input.as_bytes());
         let mut output = Output::new();
-
         solve(&mut input, &mut output);
-
         String::from_utf8(output.into_bytes()).unwrap()
     }
 
     #[test]
-    fn n1() {
-        assert_eq!(run("1\n"), "0\n");
-    }
-
-    #[test]
-    fn n2() {
-        assert_eq!(run("2\n"), "0\n6\n");
-    }
-
-    #[test]
-    fn n3() {
-        assert_eq!(run("3\n"), "0\n6\n28\n");
-    }
-
-    #[test]
-    fn n5() {
-        assert_eq!(run("5\n"), "0\n6\n28\n96\n252\n");
-    }
-
-    #[test]
-    fn n8() {
-        assert_eq!(run("8\n"), "0\n6\n28\n96\n252\n550\n1056\n1848\n");
+    fn sample() {
+        assert_eq!(run("5\n4 2 1 5 3\n"), "3\n");
     }
 }

@@ -1,4 +1,4 @@
-use competitive_rust::{Scanner, Output};
+use competitive_rust::{Output, Scanner};
 
 fn solve(input: &mut Scanner, output: &mut Output) {
     let mut n = input.next_u64();

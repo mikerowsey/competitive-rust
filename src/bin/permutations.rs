@@ -16,7 +16,6 @@ fn solve(scan: &mut Scanner, out: &mut Output) {
     }
 }
 
-
 fn main() {
     let mut input = Scanner::new();
     let mut output = Output::new();

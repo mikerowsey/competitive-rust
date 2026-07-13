@@ -1,4 +1,4 @@
-use competitive_rust::{Scanner, Output};
+use competitive_rust::{Output, Scanner};
 
 fn solve(input: &mut Scanner, output: &mut Output) {
     let mut n = input.next_u64();
@@ -17,7 +17,6 @@ fn main() {
     solve(&mut input, &mut output);
     output.print();
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -40,10 +39,7 @@ mod tests {
 
     #[test]
     fn forty_two() {
-        assert_eq!(
-            run("42\n"),
-            "42 21 64 32 16 8 4 2 1\n"
-        );
+        assert_eq!(run("42\n"), "42 21 64 32 16 8 4 2 1\n");
     }
 
     #[test]

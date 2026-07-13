@@ -10,12 +10,7 @@ pub struct MatrixMod2<const MOD: u64> {
 
 impl<const MOD: u64> MatrixMod2<MOD> {
     pub const fn new(a00: u64, a01: u64, a10: u64, a11: u64) -> Self {
-        Self {
-            a00,
-            a01,
-            a10,
-            a11,
-        }
+        Self { a00, a01, a10, a11 }
     }
 
     pub const fn identity() -> Self {

@@ -1,9 +1,7 @@
 use competitive_rust::{Output, Scanner};
 
 fn possible(a: u64, b: u64) -> bool {
-    a <= 2 * b
-        && b <= 2 * a
-        && (a + b) % 3 == 0
+    a <= 2 * b && b <= 2 * a && (a + b) % 3 == 0
 }
 
 fn solve(input: &mut Scanner, output: &mut Output) {
@@ -72,13 +70,11 @@ mod tests {
     #[test]
     fn multiple_cases() {
         assert_eq!(
-            run(
-                "4\n\
+            run("4\n\
                  2 1\n\
                  3 1\n\
                  6 6\n\
-                 9 2\n"
-            ),
+                 9 2\n"),
             "YES\n\
              NO\n\
              YES\n\

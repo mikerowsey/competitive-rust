@@ -76,7 +76,12 @@ fn print_categories(catalog: &[Category]) {
         if done.is_empty() {
             continue;
         }
-        println!("{BOLD}{}:{RESET} ({}/{})", cat.category, done.len(), cat.problems.len());
+        println!(
+            "{BOLD}{}:{RESET} ({}/{})",
+            cat.category,
+            done.len(),
+            cat.problems.len()
+        );
         print_columns(done.iter().map(|p| p.slug.as_str()).collect());
         println!();
     }
@@ -93,7 +98,12 @@ fn print_all(catalog: &[Category]) {
     println!("\n{BOLD}All CSES Problems — {done}/{total} completed{RESET}\n");
     for cat in catalog {
         let cat_done = cat.problems.iter().filter(|p| p.is_complete()).count();
-        println!("{BOLD}{}:{RESET} ({}/{})", cat.category, cat_done, cat.problems.len());
+        println!(
+            "{BOLD}{}:{RESET} ({}/{})",
+            cat.category,
+            cat_done,
+            cat.problems.len()
+        );
         print_colored_columns(&cat.problems);
         println!();
     }
@@ -143,4 +153,3 @@ fn main() {
     }
     println!();
 }
-

@@ -63,12 +63,10 @@ mod tests {
     #[test]
     fn multiple_queries() {
         assert_eq!(
-            run(
-                "3\n\
+            run("3\n\
                  7\n\
                  19\n\
-                 12\n"
-            ),
+                 12\n"),
             "7\n4\n1\n"
         );
     }

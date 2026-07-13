@@ -38,41 +38,26 @@ mod tests {
 
     #[test]
     fn sample() {
-        assert_eq!(
-            run("5\n3 2 5 1 7\n"),
-            "5\n",
-        );
+        assert_eq!(run("5\n3 2 5 1 7\n"), "5\n",);
     }
 
     #[test]
     fn already_increasing() {
-        assert_eq!(
-            run("5\n1 2 3 4 5\n"),
-            "0\n",
-        );
+        assert_eq!(run("5\n1 2 3 4 5\n"), "0\n",);
     }
 
     #[test]
     fn all_equal() {
-        assert_eq!(
-            run("5\n7 7 7 7 7\n"),
-            "0\n",
-        );
+        assert_eq!(run("5\n7 7 7 7 7\n"), "0\n",);
     }
 
     #[test]
     fn strictly_decreasing() {
-        assert_eq!(
-            run("5\n5 4 3 2 1\n"),
-            "10\n",
-        );
+        assert_eq!(run("5\n5 4 3 2 1\n"), "10\n",);
     }
 
     #[test]
     fn single_element() {
-        assert_eq!(
-            run("1\n42\n"),
-            "0\n",
-        );
+        assert_eq!(run("1\n42\n"), "0\n",);
     }
 }

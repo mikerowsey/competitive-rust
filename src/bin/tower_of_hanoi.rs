@@ -49,18 +49,12 @@ mod tests {
 
     #[test]
     fn n1() {
-        assert_eq!(
-            run("1\n"),
-            "1\n1 3\n",
-        );
+        assert_eq!(run("1\n"), "1\n1 3\n",);
     }
 
     #[test]
     fn n2() {
-        assert_eq!(
-            run("2\n"),
-            "3\n1 2\n1 3\n2 3\n",
-        );
+        assert_eq!(run("2\n"), "3\n1 2\n1 3\n2 3\n",);
     }
 
     #[test]
