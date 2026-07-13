@@ -110,6 +110,28 @@ cargo test
 scripts/run_bundle.sh
 ```
 
+## CI
+
+GitHub Actions CI runs on pushes to main and pull requests.
+
+Workflow file:
+
+- [.github/workflows/ci.yml](.github/workflows/ci.yml)
+
+CI checks:
+
+- `cargo fmt --all -- --check`
+- `cargo clippy --all-targets -- -D warnings`
+- `cargo test`
+
+Equivalent local gate:
+
+```bash
+cargo fmt --all -- --check
+cargo clippy --all-targets -- -D warnings
+cargo test
+```
+
 ## Toolchain
 
 - Rust toolchain is pinned in [rust-toolchain.toml](rust-toolchain.toml) for reproducibility.
