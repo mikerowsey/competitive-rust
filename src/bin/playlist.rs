@@ -9,9 +9,9 @@ fn solve(input: &mut Scanner, output: &mut Output) {
     for i in 0..n {
         let x: usize = input.next_usize();
         current += 1;
-        seen.insert(x, i).map(|prev| {
+        if let Some(prev) = seen.insert(x, i) {
             current = current.min(i - prev);
-        });
+        }
         maximum = maximum.max(current);
     }
     maximum = maximum.max(current);
