@@ -36,7 +36,7 @@ The vector of tower tops remains sorted throughout the algorithm, allowing binar
 
 In Rust, this is naturally expressed as:
 
-```rust
+```
 let pos = towers.partition_point(|&top| top <= cube);
 ```
 
@@ -44,7 +44,7 @@ let pos = towers.partition_point(|&top| top <= cube);
 
 This is equivalent to C++:
 
-```cpp
+```
 auto it = upper_bound(towers.begin(), towers.end(), cube);
 ```
 
